@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="SchwabenHaus White&Black: Bungalow 95, Haus 120 und Haus 130. Berechnen Sie in 2 Minuten Ihre persönliche Monatsrate inkl. KfW-Förderung.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ihr SchwabenHaus White&Black – ab kleiner Monatsrate">
+<meta property="og:description" content="Nicht der Preis zählt, sondern Ihre Rate. Jetzt persönliche Rate berechnen: Bungalow 95, Haus 120, Haus 130.">
+<meta property="og:image" content="https://whiteandblack.de/wp-content/uploads/2025/04/3904_SchwabenHaus_White_Abend_120_E1_01_SH-Web.jpg">
+<meta property="og:locale" content="de_DE">
+<meta name="twitter:card" content="summary_large_image">
+<title>Hausrate-Rechner · SchwabenHaus White&amp;Black</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f4f4f2; --paper:#ffffff; --sand:#ecebe7; --sand-2:#dddbd5;
+  --taupe:#1b1b1b; --taupe-d:#000; --ink:#111; --ink-2:#4a4a4a; --ink-3:#8b8b88;
+  --line:#e2e1dc; --navy:#0b1d3a; --gold:#b8a07a;
+  --green:#2f7a52; --green-bg:#e6f2ea; --amber:#b77a1c; --amber-bg:#fbf0dc; --red:#b0443a; --red-bg:#f8e5e2;
+  --kfw:#4f7f6a; --bank:#9a9a96;
+  --r:18px; --shadow:0 1px 2px rgba(0,0,0,.06),0 8px 28px rgba(0,0,0,.08);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter Tight',-apple-system,'Segoe UI',Roboto,Arial,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.45}
+.num{font-variant-numeric:tabular-nums}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+button{font-family:inherit}
+a{color:inherit}
+img{background:var(--sand)}
+
+/* Header */
+.top{background:#000;color:#fff;position:sticky;top:0;z-index:30}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:13px;padding-bottom:13px}
+.brand{display:flex;align-items:baseline;gap:12px}
+.brand .sh{font-weight:800;letter-spacing:.14em;font-size:17px}
+.brand .wb{font-weight:500;font-size:15px;letter-spacing:.02em;color:#cfcfcf;border-left:1px solid #444;padding-left:12px}
+.brand .wb b{color:#fff;font-weight:700}
+.coop{display:flex;align-items:center;gap:12px;text-align:right}
+.coop .lbl{font-size:11px;color:#9a9a9a}
+.bs-name{font-weight:700;font-size:14.5px;line-height:1.1}
+.bs-sub{font-size:10.5px;color:#9a9a9a}
+
+/* Hero */
+.hero{position:relative;color:#fff;background:#000;overflow:hidden}
+.hero .bgimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.62}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.82) 0%,rgba(0,0,0,.55) 45%,rgba(0,0,0,.1) 100%)}
+.hero .wrap{position:relative;z-index:1;padding-top:78px;padding-bottom:64px}
+.eyebrow{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#000;background:#fff;padding:6px 12px;border-radius:99px}
+h1{font-size:clamp(32px,5vw,58px);line-height:1.03;margin:18px 0 14px;font-weight:800;letter-spacing:-.025em;max-width:760px}
+h1 .hl{color:var(--gold)}
+.lead{font-size:clamp(16px,1.6vw,19px);color:#e3e3e3;max-width:640px;margin:0}
+.assume{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.pill{font-size:13px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);border-radius:99px;padding:6px 12px;color:#e8e8e8;backdrop-filter:blur(4px)}
+.pill b{color:#fff}
+.hero .cta-row{margin-top:26px;display:flex;gap:10px;flex-wrap:wrap}
+
+/* Stepper */
+.steps{display:flex;gap:8px;margin:30px 0 22px;flex-wrap:wrap}
+.step{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-3);background:transparent;border:0;padding:6px 10px 6px 6px;border-radius:99px;cursor:pointer}
+.step i{font-style:normal;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:var(--sand);color:var(--ink);font-weight:700;font-size:12px}
+.step.on{color:var(--ink);background:var(--paper);box-shadow:var(--shadow)}
+.step.on i{background:#000;color:#fff}
+.step.done i{background:var(--green);color:#fff}
+.step[disabled]{cursor:default;opacity:.55}
+
+/* House cards */
+.sec-intro{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:16px}
+.sec-intro h2{margin:0;font-size:clamp(24px,3vw,32px);letter-spacing:-.015em}
+.sec-intro p{margin:4px 0 0;color:var(--ink-2)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:var(--paper);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);cursor:pointer;transition:transform .25s ease,box-shadow .25s ease,outline-color .2s;outline:3px solid transparent;display:flex;flex-direction:column;text-align:left;border:0;padding:0;color:inherit}
+.card:hover{transform:translateY(-4px);box-shadow:0 2px 4px rgba(0,0,0,.06),0 18px 40px rgba(0,0,0,.14)}
+.card.sel{outline-color:#000}
+.card .ph{position:relative;aspect-ratio:16/10;overflow:hidden}
+.card .ph img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
+.card:hover .ph img{transform:scale(1.04)}
+.card .tag{position:absolute;left:12px;top:12px;background:rgba(255,255,255,.94);font-size:11.5px;font-weight:600;padding:5px 10px;border-radius:99px;color:#000}
+.card .cnt{position:absolute;left:12px;bottom:12px;background:rgba(0,0,0,.72);color:#fff;font-size:12px;font-weight:600;padding:6px 11px;border-radius:99px;border:0;cursor:zoom-in}
+.card .cnt:hover{background:#000}
+.card .selmark{position:absolute;right:12px;top:12px;background:#000;color:#fff;font-size:12px;font-weight:600;padding:5px 10px;border-radius:99px;display:none}
+.card.sel .selmark{display:block}
+.card .body{padding:18px 20px 20px;display:flex;flex-direction:column;gap:10px;flex:1}
+.card h3{margin:0;font-size:22px;letter-spacing:-.01em}
+.card h3 small{font-size:12px;font-weight:600;color:var(--ink-3);letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:2px}
+.facts{display:flex;gap:14px;font-size:13px;color:var(--ink-2);flex-wrap:wrap}
+.price{font-size:13px;color:var(--ink-2)}
+.price b{color:var(--ink)}
+.rate-box{background:var(--sand);border-radius:14px;padding:14px 16px;margin-top:2px}
+.rate-box .lbl{font-size:12px;color:var(--ink-2);font-weight:600;text-transform:uppercase;letter-spacing:.08em}
+.rate-big{font-size:40px;font-weight:800;letter-spacing:-.03em;line-height:1.05;color:var(--ink)}
+.rate-big small{font-size:15px;font-weight:600;color:var(--ink-2);letter-spacing:0}
+.rate-box .sub{font-size:13px;color:var(--ink-2);margin-top:6px;border-top:1px dashed var(--sand-2);padding-top:8px;display:flex;justify-content:space-between;gap:8px}
+.card .go{margin-top:auto;display:flex;justify-content:space-between;align-items:center;font-weight:600;color:#000;font-size:14.5px;padding-top:4px}
+.card .go .arr{width:34px;height:34px;border-radius:50%;background:#000;color:#fff;display:grid;place-items:center;transition:transform .2s}
+.card:hover .go .arr{transform:translateX(4px)}
+
+/* Detail / Galerie */
+.detail{display:grid;grid-template-columns:1.35fr 1fr;gap:22px;background:var(--paper);border-radius:22px;box-shadow:var(--shadow);padding:20px;margin-bottom:26px}
+.gal-main{position:relative;border-radius:14px;overflow:hidden;background:var(--sand);aspect-ratio:3/2;cursor:zoom-in}
+.gal-main img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity .25s}
+.gal-main.plan img{object-fit:contain;background:#fff}
+.gal-main .cap{position:absolute;left:12px;bottom:12px;background:rgba(0,0,0,.72);color:#fff;font-size:12.5px;padding:6px 11px;border-radius:99px}
+.gal-main .nav{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;border:0;background:rgba(255,255,255,.92);font-size:20px;cursor:pointer;display:grid;place-items:center}
+.gal-main .nav.p{left:10px}.gal-main .nav.n{right:10px}
+.gal-main .zoom{position:absolute;right:12px;bottom:12px;background:rgba(255,255,255,.92);font-size:12px;font-weight:600;padding:6px 10px;border-radius:99px}
+.gal-tabs{display:flex;gap:6px;margin:14px 0 10px}
+.gal-tabs button{border:1.5px solid var(--line);background:var(--paper);border-radius:99px;padding:7px 14px;font-size:13.5px;font-weight:600;color:var(--ink-2);cursor:pointer}
+.gal-tabs button.on{background:#000;color:#fff;border-color:#000}
+.thumbs{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;scrollbar-width:thin}
+.thumbs button{flex:none;width:92px;height:64px;border-radius:9px;overflow:hidden;border:2px solid transparent;padding:0;cursor:pointer;background:var(--sand)}
+.thumbs button.on{border-color:#000}
+.thumbs img{width:100%;height:100%;object-fit:cover;display:block}
+.thumbs.plan img{object-fit:contain;background:#fff}
+.dinfo .kick{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.dinfo h2{margin:4px 0 6px;font-size:clamp(26px,3vw,34px);letter-spacing:-.02em}
+.dinfo p.d{margin:0 0 14px;color:var(--ink-2)}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+.kpi{background:var(--sand);border-radius:12px;padding:10px 12px}
+.kpi span{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-3);font-weight:600}
+.kpi b{font-size:19px}
+.feat{list-style:none;margin:0 0 16px;padding:0;display:grid;gap:6px}
+.feat li{font-size:14px;padding-left:22px;position:relative}
+.feat li::before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:700}
+.dprice{display:flex;justify-content:space-between;align-items:center;gap:10px;border-top:1px solid var(--line);padding-top:12px;font-size:14px;color:var(--ink-2)}
+.dprice b{font-size:22px;color:var(--ink)}
+.dlink{font-size:13px;color:var(--ink-3);margin-top:10px;display:inline-block}
+
+/* Lightbox */
+.lb{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:100;display:none;align-items:center;justify-content:center;flex-direction:column;padding:20px}
+.lb.show{display:flex}
+.lb img{max-width:min(1400px,94vw);max-height:80vh;object-fit:contain;border-radius:8px;background:#fff}
+.lb .cap{color:#ddd;font-size:14px;margin-top:12px;text-align:center}
+.lb .x,.lb .nav{position:absolute;border:0;background:rgba(255,255,255,.12);color:#fff;width:48px;height:48px;border-radius:50%;font-size:24px;cursor:pointer}
+.lb .x{top:18px;right:18px}
+.lb .nav.p{left:18px;top:50%}.lb .nav.n{right:18px;top:50%}
+.lb .x:hover,.lb .nav:hover{background:rgba(255,255,255,.25)}
+
+/* Sections */
+section.panel{display:none;margin-top:34px}
+section.panel.show{display:block;animation:fade .45s ease}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.sec-h{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:16px;flex-wrap:wrap}
+.sec-h h2{margin:0;font-size:clamp(24px,3vw,32px);letter-spacing:-.015em}
+.sec-h p{margin:4px 0 0;color:var(--ink-2)}
+.grid2{display:grid;grid-template-columns:1.05fr .95fr;gap:22px;align-items:start}
+.box{background:var(--paper);border-radius:var(--r);box-shadow:var(--shadow);padding:22px}
+.sticky{position:sticky;top:76px}
+
+/* Controls */
+.ctl{padding:16px 0;border-bottom:1px solid var(--line)}
+.ctl:first-child{padding-top:0}
+.ctl:last-child{border-bottom:0;padding-bottom:0}
+.ctl-h{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:10px}
+.ctl-h label,.ctl-h .t{font-weight:600;font-size:15px}
+.ctl-h .v{font-weight:700;font-size:18px;color:#000}
+.hint{font-size:12.5px;color:var(--ink-3);margin-top:6px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{border:1.5px solid var(--line);background:var(--paper);border-radius:12px;padding:9px 14px;font-size:14px;font-weight:600;color:var(--ink-2);cursor:pointer;transition:all .15s;min-width:46px}
+.chip:hover{border-color:#000}
+.chip.on{background:#000;color:#fff;border-color:#000}
+.chip .d{display:block;font-size:11px;font-weight:500;opacity:.8}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:8px;border-radius:99px;background:linear-gradient(to right,#000 var(--p,50%),var(--sand-2) var(--p,50%));outline:none;margin:6px 0}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;background:#fff;border:3px solid #000;box-shadow:0 2px 6px rgba(0,0,0,.18);cursor:grab}
+input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:#fff;border:3px solid #000;cursor:grab}
+.scale{display:flex;justify-content:space-between;font-size:11.5px;color:var(--ink-3)}
+.switch{display:flex;align-items:center;gap:12px;cursor:pointer;user-select:none}
+.switch input{display:none}
+.switch .tr{width:48px;height:28px;border-radius:99px;background:var(--sand-2);position:relative;transition:background .2s;flex:none}
+.switch .tr::after{content:"";position:absolute;left:3px;top:3px;width:22px;height:22px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.2);transition:transform .2s}
+.switch input:checked+.tr{background:var(--green)}
+.switch input:checked+.tr::after{transform:translateX(20px)}
+.switch .tx b{display:block;font-size:15px}
+.switch .tx span{font-size:12.5px;color:var(--ink-3)}
+.mini{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:13.5px;color:var(--ink-2);margin-top:10px}
+.mini.big{font-size:14.5px;color:var(--ink)}
+.mini small{color:var(--ink-3);font-size:12px}
+.stp{display:inline-flex;align-items:center;gap:6px;flex:none}
+.stp button{width:32px;height:32px;border-radius:9px;border:1.5px solid var(--line);background:var(--paper);font-size:18px;font-weight:700;color:#000;cursor:pointer;line-height:1}
+.stp button:hover{border-color:#000}
+.stp em{font-style:normal;font-weight:600;color:var(--ink-3)}
+.numin{width:130px;border:1.5px solid var(--line);border-radius:10px;padding:7px 10px;font:inherit;font-weight:700;text-align:right;color:#000;font-size:16px}
+.numin.sm{width:76px;padding:6px 8px;font-size:15px}
+.numin:focus{outline:none;border-color:#000}
+.zinsbox{background:var(--bg);border-radius:14px;padding:16px!important;border:1px solid var(--line);margin-top:16px}
+
+/* Result panel */
+.res-house{display:flex;gap:12px;align-items:center;margin-bottom:14px}
+.res-house img{width:84px;height:56px;object-fit:cover;border-radius:10px}
+.res-house b{display:block;font-size:17px}
+.res-house span{font-size:13px;color:var(--ink-3)}
+.bigrate{background:linear-gradient(135deg,#000,#2b2b2b);color:#fff;border-radius:16px;padding:20px 22px;position:relative;overflow:hidden}
+.bigrate::after{content:"";position:absolute;right:-60px;top:-60px;width:200px;height:200px;border-radius:50%;border:28px solid rgba(255,255,255,.06)}
+.bigrate .lbl{font-size:12.5px;text-transform:uppercase;letter-spacing:.1em;opacity:.8;font-weight:600}
+.bigrate .val{font-size:clamp(44px,6vw,60px);font-weight:800;letter-spacing:-.035em;line-height:1}
+.bigrate .val small{font-size:18px;font-weight:600;opacity:.85;letter-spacing:0}
+.bigrate .delta{display:inline-flex;margin-top:10px;font-size:13px;font-weight:600;background:rgba(255,255,255,.14);padding:5px 10px;border-radius:99px}
+.kfw-badge{display:flex;gap:10px;align-items:flex-start;background:var(--green-bg);color:#1f5a3b;border-radius:12px;padding:12px 14px;font-size:13.5px;margin-top:14px}
+.kfw-badge.off{background:var(--sand);color:var(--ink-2)}
+.kfw-badge .ic{font-size:18px;line-height:1}
+.wf{margin-top:18px}
+.wf h4,.cmp h4{margin:0 0 10px;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-3)}
+.wf-row{display:grid;grid-template-columns:150px 1fr 82px;gap:10px;align-items:center;font-size:13.5px;padding:5px 0}
+.wf-row .bar{height:14px;border-radius:5px;position:relative}
+.wf-row .bar i{position:absolute;top:0;bottom:0;border-radius:5px;transition:left .5s ease,width .5s ease}
+.wf-row .amt{text-align:right;font-weight:700}
+.wf-row.plus i{background:var(--bank)}
+.wf-row.minus i{background:var(--kfw)}
+.wf-row.minus .amt{color:var(--green)}
+.wf-row.total{border-top:1.5px solid var(--ink);margin-top:4px;padding-top:9px;font-weight:700}
+.wf-row.total i{background:#000}
+.split{display:flex;height:12px;border-radius:99px;overflow:hidden;margin:10px 0 6px;background:var(--sand)}
+.split i{display:block;height:100%;transition:width .5s ease}
+.legend{display:flex;gap:14px;font-size:12.5px;color:var(--ink-2);flex-wrap:wrap}
+.legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;background:var(--c);vertical-align:-1px}
+.cmp{margin-top:18px}
+.cmp-row{display:flex;gap:8px}
+.cmp-item{flex:1;border:1.5px solid var(--line);border-radius:12px;padding:10px;cursor:pointer;background:var(--paper);text-align:left;transition:border-color .15s}
+.cmp-item:hover{border-color:#000}
+.cmp-item.on{border-color:#000;background:var(--sand)}
+.cmp-item span{display:block;font-size:12px;color:var(--ink-3)}
+.cmp-item b{font-size:17px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:#000;color:#fff;border:0;border-radius:14px;padding:15px 22px;font-size:15.5px;font-weight:700;cursor:pointer;text-decoration:none;transition:background .15s,transform .15s}
+.btn:hover{background:#2b2b2b;transform:translateY(-1px)}
+.btn.ghost{background:var(--paper);color:#000;border:1.5px solid var(--line)}
+.btn.ghost:hover{border-color:#000}
+.btn.light{background:#fff;color:#000}
+.btn.light:hover{background:#e9e9e9}
+.btn.outline{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.5)}
+.btn.outline:hover{background:rgba(255,255,255,.1)}
+.btn.navy{background:var(--navy)}
+.btn.navy:hover{background:#16315c}
+.btn.full{width:100%}
+.next{margin-top:18px}
+.bankcheck{margin-top:18px;background:#eef1f6;border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:8px;font-size:13.5px;color:var(--ink-2)}
+.bankcheck b{font-size:16px;color:var(--navy)}
+
+/* Haushalt */
+.verdict{border-radius:16px;padding:20px 22px;display:flex;gap:16px;align-items:flex-start}
+.verdict .ic{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;font-size:24px;flex:none;color:#fff}
+.verdict h3{margin:0 0 4px;font-size:22px}
+.verdict p{margin:0;font-size:14.5px}
+.verdict.ok{background:var(--green-bg)} .verdict.ok .ic{background:var(--green)} .verdict.ok h3{color:var(--green)}
+.verdict.mid{background:var(--amber-bg)} .verdict.mid .ic{background:var(--amber)} .verdict.mid h3{color:var(--amber)}
+.verdict.no{background:var(--red-bg)} .verdict.no .ic{background:var(--red)} .verdict.no h3{color:var(--red)}
+.budget{margin-top:18px}
+.bbar{display:flex;height:40px;border-radius:12px;overflow:hidden;background:var(--sand)}
+.bbar i{display:flex;align-items:center;justify-content:center;color:#fff;font-style:normal;font-size:12px;font-weight:700;white-space:nowrap;overflow:hidden;transition:width .5s ease}
+.bbar .l{background:#a5a5a0}.bbar .k{background:#6f6f6b}.bbar .h{background:#000}.bbar .f{background:var(--green)}.bbar .x{background:repeating-linear-gradient(45deg,var(--red),var(--red) 6px,#c9574c 6px,#c9574c 12px)}
+.tbl{width:100%;border-collapse:collapse;margin-top:14px;font-size:14px}
+.tbl td{padding:7px 0;border-bottom:1px solid var(--line)}
+.tbl td:last-child{text-align:right;font-weight:600}
+.tbl tr.sum td{border-bottom:0;border-top:2px solid var(--ink);font-weight:800;font-size:15.5px;padding-top:10px}
+.levers{margin-top:16px;display:grid;gap:8px}
+.lever{display:flex;gap:10px;align-items:center;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:14px}
+.lever b{color:#000}
+.miete{margin-top:16px;background:var(--sand);border-radius:14px;padding:14px 16px;font-size:14.5px}
+.miete b{font-size:18px}
+.warn{font-size:13px;background:var(--amber-bg);color:#7a5211;border-radius:10px;padding:10px 12px;margin-top:10px;display:none}
+.warn.show{display:block}
+
+/* CTA */
+.cta{background:#000;color:#fff;border-radius:22px;padding:34px;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:26px;align-items:stretch;position:relative;overflow:hidden}
+.cta h2{margin:0 0 10px;font-size:clamp(24px,3vw,32px);letter-spacing:-.015em}
+.cta p{margin:0;opacity:.8}
+.person{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:6px}
+.person .av{width:46px;height:46px;border-radius:50%;background:#fff;color:#000;display:grid;place-items:center;font-weight:800;font-size:16px;margin-bottom:4px}
+.person .role{font-size:11.5px;text-transform:uppercase;letter-spacing:.1em;opacity:.65}
+.person b{font-size:18px}
+.person .co{font-size:13px;opacity:.75}
+.person .acts{display:flex;flex-direction:column;gap:8px;margin-top:auto;padding-top:10px}
+.person .btn{padding:12px 16px;font-size:14.5px}
+
+.fineprint{font-size:12px;color:var(--ink-3);margin:30px 0 10px;line-height:1.55}
+.fineprint h5{font-size:12px;margin:0 0 6px;color:var(--ink-2);text-transform:uppercase;letter-spacing:.08em}
+.repr{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:14px}
+footer{border-top:1px solid var(--line);background:var(--paper);margin-top:40px}
+footer .wrap{padding-top:22px;padding-bottom:28px;font-size:12px;color:var(--ink-3);display:grid;grid-template-columns:1fr 1fr;gap:20px}
+footer b{color:var(--ink-2)}
+
+/* Print */
+.print-only{display:none}
+@media print{
+  @page{size:A4;margin:14mm}
+  body{background:#fff}
+  .no-print{display:none!important}
+  .print-only{display:block!important}
+  .pr h1{font-size:26px;margin:0 0 4px;color:#000}
+  .pr table{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:10px}
+  .pr td{padding:5px 0;border-bottom:1px solid #ddd}
+  .pr td:last-child{text-align:right;font-weight:600}
+  .pr img{width:100%;max-height:230px;object-fit:cover;border-radius:10px;margin:10px 0}
+}
+
+@media (max-width:980px){
+  .cards{grid-template-columns:1fr;max-width:560px}
+  .grid2,.detail{grid-template-columns:1fr}
+  .sticky{position:static}
+  .cta{grid-template-columns:1fr}
+  footer .wrap{grid-template-columns:1fr}
+}
+@media (max-width:520px){
+  .wrap{padding:0 16px}
+  .hero .wrap{padding-top:52px;padding-bottom:44px}
+  .brand .wb{display:none}
+  .wf-row{grid-template-columns:112px 1fr 70px;font-size:12.5px}
+  .box,.detail{padding:16px}
+  .cta{padding:22px}
+  .coop .lbl{display:none}
+  .cmp-row{flex-direction:column}
+  .kpis{grid-template-columns:repeat(3,1fr)}
+}
+</style>
+</head>
+<body>
+
+<div class="no-print">
+<header class="top">
+  <div class="wrap">
+    <div class="brand"><span class="sh">SCHWABENHAUS</span><span class="wb"><b>white</b>&amp;black</span></div>
+    <div class="coop">
+      <span class="lbl">Finanzierung in Kooperation mit</span>
+      <div><div class="bs-name">CEB Bankshop AG</div><div class="bs-sub">Vermittlung von Bankdienstleistungen</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="hero">
+  <img class="bgimg" id="heroImg" alt="">
+  <div class="wrap">
+    <span class="eyebrow">Wohneigentum bezahlbar</span>
+    <h1>Nicht der Preis zählt.<br><span class="hl">Sondern Ihre Rate: ab <span id="heroMin" class="num">–</span> € im Monat.</span></h1>
+    <p class="lead">Drei Häuser der Linie White&amp;Black von SchwabenHaus. Klar im Design, durchdacht im Grundriss. Wählen Sie Ihr Haus und sehen Sie in wenigen Klicks, welche Monatsrate zu Ihnen passt, inklusive staatlicher Förderung.</p>
+    <div class="assume" id="assume"></div>
+    <div class="cta-row"><a class="btn light" href="#haeuser">Häuser ansehen ↓</a></div>
+  </div>
+</div>
+
+<main class="wrap">
+  <nav class="steps" id="steps">
+    <button class="step on" data-go="haeuser"><i>1</i>Haus wählen</button>
+    <button class="step" data-go="s2" disabled><i>2</i>Rate anpassen</button>
+    <button class="step" data-go="s3" disabled><i>3</i>Passt es zu mir?</button>
+    <button class="step" data-go="s4" disabled><i>4</i>Beratung</button>
+  </nav>
+
+  <div id="haeuser">
+    <div class="sec-intro"><div><h2>Ihr Haus. Ihre Rate.</h2><p>Tippen Sie auf ein Haus: Sie sehen alle Ansichten, Grundrisse und Ihre persönliche Rate.</p></div></div>
+    <div id="s1" class="cards"></div>
+  </div>
+
+  <!-- STEP 2 -->
+  <section class="panel" id="s2">
+    <div class="detail" id="detail">
+      <div>
+        <div class="gal-main" id="galMain">
+          <img id="galImg" alt="">
+          <button class="nav p" id="galPrev" aria-label="Vorheriges Bild">‹</button>
+          <button class="nav n" id="galNext" aria-label="Nächstes Bild">›</button>
+          <span class="cap" id="galCap"></span>
+          <span class="zoom">⤢ Vergrößern</span>
+        </div>
+        <div class="gal-tabs" id="galTabs">
+          <button data-t="bilder" class="on">Ansichten</button>
+          <button data-t="plaene">Grundrisse</button>
+        </div>
+        <div class="thumbs" id="thumbs"></div>
+      </div>
+      <div class="dinfo">
+        <div class="kick" id="dKick"></div>
+        <h2 id="dName"></h2>
+        <p class="d" id="dDesc"></p>
+        <div class="kpis" id="dKpis"></div>
+        <ul class="feat" id="dFeat"></ul>
+        <div class="dprice"><span>Hauspreis</span><b class="num" id="dPrice"></b></div>
+        <div class="dprice" style="border:0;padding-top:6px"><span>Ihre Rate ab</span><b class="num" id="dRate"></b></div>
+        <a class="dlink" id="dLink" target="_blank" rel="noopener">Mehr zum Haus auf whiteandblack.de ↗</a>
+      </div>
+    </div>
+
+    <div class="sec-h">
+      <div><h2>Ihre persönliche Rate</h2><p>Schieben Sie die Regler, die Rate rechnet sofort mit.</p></div>
+    </div>
+    <div class="grid2">
+      <div class="box">
+        <div class="ctl">
+          <div class="ctl-h"><span class="t">Kinder unter 18 im Haushalt</span></div>
+          <div class="chips" id="kinderChips"></div>
+          <div class="hint">Familien mit Kindern erhalten das zinsgünstige KfW-Förderdarlehen „Wohneigentum für Familien“.</div>
+        </div>
+        <div class="ctl">
+          <label class="switch"><input type="checkbox" id="qng"><span class="tr"></span>
+            <span class="tx"><b>Mit QNG-Siegel bauen</b><span>Qualitätssiegel Nachhaltiges Gebäude: mehr Förderdarlehen möglich</span></span></label>
+        </div>
+        <div class="ctl">
+          <div class="ctl-h"><label for="gIn">Grundstückspreis</label><input class="numin num" id="gIn" inputmode="numeric" aria-label="Grundstückspreis in Euro"></div>
+          <div class="chips" id="gChips"></div>
+          <input type="range" id="grund" min="0" max="400000" step="1000" aria-label="Grundstückspreis">
+          <div class="scale"><span>0 €</span><span>200.000 €</span><span>400.000 €</span></div>
+          <div class="hint" id="gHint"></div>
+          <div class="mini"><span>Kaufnebenkosten auf das Grundstück</span>
+            <span class="stp"><button type="button" data-k="knk" data-d="-0.5">−</button><input class="numin sm num" id="knkIn" inputmode="decimal" aria-label="Kaufnebenkosten in Prozent"><em>%</em><button type="button" data-k="knk" data-d="0.5">+</button></span></div>
+        </div>
+        <div class="ctl">
+          <div class="ctl-h"><span class="t">Eigenkapital</span><span class="v num" id="ekVal">–</span></div>
+          <input type="range" id="ek" min="0" max="200000" step="5000">
+          <div class="scale"><span>0 €</span><span>100.000 €</span><span>200.000 €</span></div>
+        </div>
+        <div class="ctl zinsbox">
+          <div class="ctl-h"><span class="t">Zinsen &amp; Tilgung</span><span class="hint" style="margin:0">auf die Stelle genau einstellbar</span></div>
+          <div class="mini big"><span><b>Sollzins Bankdarlehen</b><br><small>10 Jahre Zinsbindung</small></span>
+            <span class="stp"><button type="button" data-k="zins" data-d="-0.05">−</button><input class="numin sm num" id="zinsIn" inputmode="decimal" aria-label="Sollzins Bankdarlehen"><em>%</em><button type="button" data-k="zins" data-d="0.05">+</button></span></div>
+          <input type="range" id="zins" min="2" max="7" step="0.01" aria-label="Sollzins Bankdarlehen">
+          <div class="mini"><span>Sollzins KfW 300 (Familien)</span>
+            <span class="stp"><button type="button" data-k="z300" data-d="-0.05">−</button><input class="numin sm num" id="z300In" inputmode="decimal" aria-label="Sollzins KfW 300"><em>%</em><button type="button" data-k="z300" data-d="0.05">+</button></span></div>
+          <div class="mini"><span>Sollzins KfW 297/298 (Neubau)</span>
+            <span class="stp"><button type="button" data-k="z297" data-d="-0.05">−</button><input class="numin sm num" id="z297In" inputmode="decimal" aria-label="Sollzins KfW 297/298"><em>%</em><button type="button" data-k="z297" data-d="0.05">+</button></span></div>
+          <div class="mini"><span>Anfängliche Tilgung Bankdarlehen</span>
+            <span class="stp"><button type="button" data-k="tilg" data-d="-0.25">−</button><input class="numin sm num" id="tilgIn" inputmode="decimal" aria-label="Anfängliche Tilgung"><em>%</em><button type="button" data-k="tilg" data-d="0.25">+</button></span></div>
+          <div class="hint" id="tilgHint"></div>
+          <div class="hint" id="kfwZinsHint"></div>
+        </div>
+      </div>
+
+      <div class="box sticky">
+        <div class="res-house"><img id="rImg" alt=""><div><b id="rName"></b><span id="rFacts"></span></div></div>
+        <div class="bigrate">
+          <div class="lbl">Ihre monatliche Rate</div>
+          <div class="val num"><span id="rRate">–</span> € <small>/ Monat</small></div>
+          <div class="delta num" id="rDelta"></div>
+        </div>
+        <div class="kfw-badge" id="kfwBadge"></div>
+        <div class="wf"><h4>So setzt sich Ihre Rate zusammen</h4><div id="wfRows"></div></div>
+        <div><div class="split" id="split"></div><div class="legend" id="splitLegend"></div></div>
+        <div class="cmp"><h4>Mit Ihren Angaben im Vergleich</h4><div class="cmp-row" id="cmp"></div></div>
+        <div class="next"><button class="btn full" id="toS3">Kann ich mir das leisten? Haushalt prüfen →</button></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEP 3 -->
+  <section class="panel" id="s3">
+    <div class="sec-h">
+      <div><h2>Passt die Rate zu Ihrem Haushalt?</h2><p>Eine schnelle Haushaltsrechnung, so wie auch die Bank rechnet.</p></div>
+    </div>
+    <div class="grid2">
+      <div class="box">
+        <div class="ctl">
+          <div class="ctl-h"><span class="t">Erwachsene im Haushalt</span></div>
+          <div class="chips" id="erwChips"></div>
+        </div>
+        <div class="ctl">
+          <div class="ctl-h"><label for="nettoIn">Monatliches Netto-Einkommen des Haushalts</label><input class="numin num" id="nettoIn" inputmode="numeric"></div>
+          <input type="range" id="netto" min="1500" max="12000" step="50">
+          <div class="scale"><span>1.500 €</span><span>6.750 €</span><span>12.000 €</span></div>
+          <div class="hint">Inklusive Kindergeld und regelmäßiger Nebeneinkünfte.</div>
+        </div>
+        <div class="ctl">
+          <div class="ctl-h"><span class="t">Laufende Kreditraten (Auto, Konsum …)</span><span class="v num" id="kredVal">–</span></div>
+          <input type="range" id="kred" min="0" max="2000" step="25">
+        </div>
+        <div class="ctl">
+          <div class="ctl-h"><span class="t">Heutige Warmmiete</span><span class="v num" id="mieteVal">–</span></div>
+          <input type="range" id="miete" min="0" max="3000" step="25">
+          <div class="hint">Optional, zum Vergleich: Was Sie heute schon jeden Monat bezahlen.</div>
+        </div>
+        <div class="ctl" id="foerderCtl">
+          <div class="ctl-h"><span class="t">Zu versteuerndes Haushaltseinkommen / Jahr</span><span class="v num" id="zveVal">–</span></div>
+          <input type="range" id="zve" min="20000" max="200000" step="1000">
+          <div class="hint" id="zveHint"></div>
+          <label class="switch" style="margin-top:12px"><input type="checkbox" id="eigentum"><span class="tr"></span>
+            <span class="tx"><b>Wir besitzen bereits Wohneigentum</b><span>Dann entfällt die Familienförderung</span></span></label>
+          <div class="warn" id="foerderWarn"></div>
+        </div>
+      </div>
+
+      <div class="box sticky">
+        <div class="verdict" id="verdict"></div>
+        <div class="budget">
+          <div class="bbar" id="bbar"></div>
+          <div class="legend" style="margin-top:8px" id="bLegend"></div>
+        </div>
+        <table class="tbl num" id="htab"></table>
+        <div class="miete" id="mieteBox"></div>
+        <div class="levers" id="levers"></div>
+        <div class="bankcheck">
+          <b>Welche Bank passt am besten zu Ihnen?</b>
+          <span>Wir vergleichen kostenfrei und unverbindlich über 750 Banken, auf Wunsch auch Ihre Hausbank. Ihr persönliches Ergebnis erhalten Sie innerhalb von 48 Stunden.</span>
+          <a class="btn navy full" id="saLink" target="_blank" rel="noopener">Jetzt mit über 750 Banken prüfen →</a>
+        </div>
+        <div class="next"><button class="btn ghost full" id="toS4">Oder: Beratungstermin sichern →</button></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEP 4 -->
+  <section class="panel" id="s4">
+    <div class="cta">
+      <div>
+        <h2>Aus der Rate wird Ihr Zuhause.</h2>
+        <p id="ctaText">Lassen Sie uns gemeinsam prüfen, wie Ihre Finanzierung konkret aussieht, kostenfrei und unverbindlich.</p>
+        <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn outline" id="printBtn">Ergebnis drucken / als PDF</button>
+        </div>
+      </div>
+      <div class="person" id="pHaus"></div>
+      <div class="person" id="pFin"></div>
+    </div>
+  </section>
+
+  <div class="fineprint">
+    <div class="repr" id="repr"></div>
+    <div id="annahmen"></div>
+  </div>
+</main>
+
+<footer><div class="wrap" id="impressum"></div></footer>
+</div>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true">
+  <button class="x" id="lbX" aria-label="Schließen">×</button>
+  <button class="nav p" id="lbP" aria-label="Vorheriges">‹</button>
+  <img id="lbImg" alt="">
+  <div class="cap" id="lbCap"></div>
+  <button class="nav n" id="lbN" aria-label="Nächstes">›</button>
+</div>
+
+<div class="print-only pr" id="printArea"></div>
+
+<script>
+/* ============================================================================
+   KONFIGURATION – hier alles anpassen
+   ============================================================================ */
+const U = 'https://whiteandblack.de/wp-content/uploads/';
+const CONFIG = {
+  // ╔══════════════════════════════════════════════════════════════════╗
+  // ║  KONDITIONEN – regelmäßig aktualisieren                         ║
+  // ╚══════════════════════════════════════════════════════════════════╝
+  bankzins: 4.30,          // Sollzins Bankdarlehen, 10 Jahre Zinsbindung (% p. a.)
+  tilgung: 1.0,            // anfängliche Tilgung Bankdarlehen (% p. a.)
+  zinsbindung: 10,
+
+  // KfW 300 – Wohneigentum für Familien (Vorrang bei Kindern)
+  kfw300: {
+    zins: 1.51, laufzeit: 35,
+    staffelung: {               // max. zvE / Kreditbetrag ohne QNG / mit QNG
+      1: { maxEinkommen:  90000, basis: 170000, qng: 220000 },
+      2: { maxEinkommen: 100000, basis: 170000, qng: 220000 },
+      3: { maxEinkommen: 110000, basis: 200000, qng: 250000 },
+      4: { maxEinkommen: 120000, basis: 200000, qng: 250000 },
+      5: { maxEinkommen: 130000, basis: 220000, qng: 270000 },
+    },
+    proWeiteremKind: 10000,
+  },
+  // KfW 297/298 – Klimafreundlicher Neubau (Fallback, nicht mit 300 kombinierbar)
+  kfw297: { zins: 2.50, laufzeit: 35, maxEh40: 100000, maxEh40Qng: 150000 },
+
+  // Kaufnebenkosten auf das Grundstück (Sachsen: 5,5 % GrESt + Notar/Grundbuch)
+  kaufnebenkostenQuote: 7.5,
+  // Beispiel-Grundstück für die zweite Rate auf den Hauskarten
+  beispielGrundstueck: 80000,
+  grundstueckChips: [50000, 80000, 120000],
+
+  // Haushaltsrechnung (Bank-Pauschalen €/Monat)
+  haushalt: { erwachsener1: 850, erwachsener2: 400, hausunterhalt: 300 },
+
+  // Startwerte (so wird die Rate auf den Hauskarten beworben)
+  start: { kinder: 2, qng: true, eigenkapital: 40000, grundstueck: 0,
+           erwachsene: 2, netto: 4800, kredite: 0, miete: 1100, zve: 85000 },
+
+  // ╔══════════════════════════════════════════════════════════════════╗
+  // ║  HÄUSER – Preise lt. Vorgabe (Hauspreis ohne Grundstück)        ║
+  // ╚══════════════════════════════════════════════════════════════════╝
+  haeuser: [
+    { id:'b95', name:'Bungalow 95', kurz:'Bungalow', typ:'Bungalow', flaeche:95.88, zimmer:4, geschosse:1,
+      hauspreis:275000, url:'https://whiteandblack.de/haeuser/whiteblack-bungalow-95/',
+      desc:'Alles auf einer Ebene: barrierearm, hell und mit 4 Zimmern auf knapp 96 m². Ideal für junge Familien genauso wie für später.',
+      features:['Alle Räume ebenerdig, ohne Treppe','25° Satteldach oder 22° Walmdach','Eingang traufseitig, klare Zonierung','Paket Fensterupgrade','Optional mit Keller oder Terrassenüberdachung'],
+      bilder:[
+        { src:U+'2025/12/WAB-B-095_3401_C3_min.jpeg', cap:'Concept 3 · Walmdach mit Terrassenüberdachung' },
+        { src:U+'2025/12/WAB-B-095_2401-C1_min.jpeg', cap:'Concept 1 · Satteldach, Design XS' },
+        { src:U+'2025/12/WAB_B_095_2402_C2_min.jpeg', cap:'Concept 2 · mit Rechteck-Erkern' },
+      ],
+      plaene:[
+        { src:U+'2025/12/B95_bp.jpg', cap:'Erdgeschoss · auf Bodenplatte' },
+        { src:U+'2025/12/B95_c1.jpg', cap:'Erdgeschoss · Concept 1 (95,88 m²)' },
+        { src:U+'2025/12/B95_c2.jpg', cap:'Erdgeschoss · Concept 2 (101,46 m²)' },
+        { src:U+'2025/12/B95_c3.jpg', cap:'Erdgeschoss · Concept 3 Walmdach' },
+        { src:U+'2025/12/B95_keller.jpg', cap:'Erdgeschoss · Variante auf Keller' },
+      ] },
+    { id:'e120', name:'Haus 120', kurz:'Einfamilienhaus', typ:'Einfamilienhaus', flaeche:122.13, zimmer:3, geschosse:2,
+      hauspreis:288000, url:'https://whiteandblack.de/haeuser/whiteandblack-120/',
+      desc:'Das kompakte Familienhaus auf zwei Etagen: offener Wohn-Ess-Bereich unten, Rückzugsräume oben. Klare Linien im typischen White&Black-Look.',
+      features:['Gäste-WC im Erdgeschoss','Wahlweise 38° oder 25° Satteldach bzw. Walmdach','Eingang giebel- oder traufseitig','Dachüberstand Style L','Paket Fensterupgrade'],
+      bilder:[
+        { src:U+'2025/04/3904_SchwabenHaus_White_Abend_120_E1_01_SH-Web.jpg', cap:'Außenansicht am Abend' },
+        { src:U+'2025/04/3904_SchwabenHaus_White_Abend_120_E2_02_SH-Web.jpg', cap:'Außenansicht · Variante 25° Satteldach' },
+        { src:U+'2025/05/3904_SchwabenHaus_White_Abend_120_E2_02_erweitert-scaled.webp', cap:'Außenansicht · erweiterte Perspektive' },
+        { src:U+'2025/04/WAB-E-120_3201-Concept3_web.jpg', cap:'Concept 3 · Walmdach mit Erker' },
+        { src:U+'2025/05/Parallax_120_1-scaled.webp', cap:'Wohnen in Haus 120' },
+      ],
+      plaene:[
+        { src:U+'2025/04/WAB-E-120_1111_Katalog_EG1-1024x725.jpg', cap:'Erdgeschoss · Concept 1' },
+        { src:U+'2025/04/WAB-E-120_1111_Katalog_OG1-1024x725.jpg', cap:'Obergeschoss · Concept 1' },
+        { src:U+'2025/04/WAB-E-120_2211_Katalog_EG1-1024x798.jpg', cap:'Erdgeschoss · Concept 2 (Eingang Traufe)' },
+        { src:U+'2025/04/WAB-E-120_2211_Katalog_OG1-1024x798.jpg', cap:'Obergeschoss · Concept 2' },
+        { src:U+'2025/04/WAB-E-120_3101_Katalog_EG1-1024x805.jpg', cap:'Erdgeschoss · Concept 3 Walmdach' },
+        { src:U+'2025/04/WAB-E-120_3101_Katalog_OG1-1024x806.jpg', cap:'Obergeschoss · Concept 3' },
+      ] },
+    { id:'e130', name:'Haus 130', kurz:'Einfamilienhaus', typ:'Einfamilienhaus', flaeche:131.76, zimmer:3, geschosse:2,
+      hauspreis:315000, url:'https://whiteandblack.de/haeuser/whiteandblack-130/',
+      desc:'Mehr Raum zum Leben: großzügiger Wohnbereich mit Speisekammer und Gäste-WC, darüber viel Platz für die Familie.',
+      features:['Speisekammer und Gäste-WC','Wahlweise 38° oder 25° Satteldach bzw. Walmdach','Dachüberstand Style XL / XXL','Optional Übereck-Erker mit Glasgeländer','Paket Fensterupgrade'],
+      bilder:[
+        { src:U+'2025/04/3904_SchwabenHaus_White_Abend_130_E2_04_SH-Web-1536x1086.jpg', cap:'Außenansicht am Abend' },
+        { src:U+'2025/04/3904_SchwabenHaus_White_Abend_130_E1_02_SH-Web-1536x1085.jpg', cap:'Außenansicht · Variante 38° Satteldach' },
+        { src:U+'2025/04/WAB-E-130_3101-Concept3_Web-1536x1087.jpg', cap:'Concept 3 · Walmdach mit Übereck-Erker' },
+      ],
+      plaene:[
+        { src:U+'2025/04/WAB-E-130_1111_Katalog_EG1-1024x724.jpg', cap:'Erdgeschoss · Concept 1' },
+        { src:U+'2025/04/WAB-E-130_1111_Katalog_OG1-1024x724.jpg', cap:'Obergeschoss · Concept 1' },
+        { src:U+'2025/04/WAB-E-130_2211_Katalog_EG1-1024x724.jpg', cap:'Erdgeschoss · Concept 2 (Eingang Traufe)' },
+        { src:U+'2025/04/WAB-E-130_2211_Katalog_OG1-1024x724.jpg', cap:'Obergeschoss · Concept 2' },
+        { src:U+'2025/04/WAB-E-130_3101_Katalog_EG1-1024x799.jpg', cap:'Erdgeschoss · Concept 3 Walmdach' },
+        { src:U+'2025/04/WAB-E-130_3101_Katalog_OG1-1024x800.jpg', cap:'Obergeschoss · Concept 3' },
+      ] },
+  ],
+
+  // ============== PERSONALISIERUNG ==============
+  hausverkaeufer: {
+    rolle: 'Ihr Hausberater', name: 'Mario Batz', firma: 'SchwabenHaus · White&Black',
+    telefon: '',   // z. B. '0171 123 4567' – Button erscheint automatisch
+    email: '',     // z. B. 'mario.batz@schwabenhaus.de' – Button „Termin per E-Mail“ erscheint automatisch
+  },
+  finanzierer: {
+    rolle: 'Ihr Finanzierungsberater', name: 'Felix Boukhors',
+    firma: 'CEB Bankshop AG', telefon: '0152 2256 3880', email: null,
+    selbstauskunftUrl: 'https://www.finanzexperte.eu/link/selbstauskunft/b/242y2410240O6P0f6bJySDz0YzgJTouE6Ra0TR7eux4pAp04woHwhdUMwE03H6',
+    ctaLabel: 'Jetzt mit 750+ Banken prüfen',
+  },
+  anbieter: {
+    name: 'CEB Bankshop AG', zusatz: 'Vermittlung von Bankdienstleistungen',
+    adresse: 'Stallbaumstraße 11, 04155 Leipzig', telefon: '0341 / 590 84-0', email: 'info@bankshop.de', web: 'www.bankshop.de',
+    handelsregister: 'Amtsgericht Leipzig, HRB 22885', vorstand: 'Sven Thom, Nils Thom', aufsichtsrat: 'RA Dr. Michael Schulte',
+    erlaubnis: 'Immobiliardarlehensvermittler gemäß § 34i Abs. 1 Satz 1 GewO', registrierungsnummer: 'D-W-159-Q68C-94', registerbehoerde: 'IHK Leipzig',
+    impressumUrl: 'https://www.bankshop.de/impressum.html', datenschutzUrl: 'https://www.bankshop.de/datenschutz.html',
+  },
+};
+
+/* ============================================================================
+   RECHENKERN
+   ============================================================================ */
+const C = CONFIG;
+C.haeuser.forEach(h => { h.img = h.bilder[0].src; });
+const KNK = () => S.knk / 100;
+
+const eur = (v, d = 0) => new Intl.NumberFormat('de-DE', { minimumFractionDigits: d, maximumFractionDigits: d }).format(v);
+const pct = (v, d = 2) => eur(v, d) + ' %';
+
+const rateBank = (d, z, t) => d > 0 ? d * (z + t) / 1200 : 0;
+function rateAnnuitaet(d, z, jahre) {
+  if (d <= 0) return 0; const i = z / 1200, n = jahre * 12;
+  return i === 0 ? d / n : d * i / (1 - Math.pow(1 + i, -n));
+}
+function restschuldBank(d, z, t, j) {
+  if (d <= 0) return 0; const i = z / 1200, a = rateBank(d, z, t), n = j * 12, q = Math.pow(1 + i, n);
+  return Math.max(0, d * q - a * (q - 1) / i);
+}
+function restschuldAnn(d, z, jahre, j) {
+  if (d <= 0) return 0; const i = z / 1200, a = rateAnnuitaet(d, z, jahre), n = j * 12, q = Math.pow(1 + i, n);
+  return Math.max(0, d * q - a * (q - 1) / i);
+}
+function laufzeitBank(z, t) {
+  const i = z / 1200, r = (z + t) / 1200; if (r <= i) return Infinity;
+  return Math.log(r / (r - i)) / Math.log(1 + i) / 12;
+}
+const effZins = z => (Math.pow(1 + z / 1200, 12) - 1) * 100;
+
+function foerderung(s) {
+  if (s.kinder >= 1 && !s.eigentum) {
+    const st = C.kfw300.staffelung[Math.min(s.kinder, 5)];
+    const grenze = st.maxEinkommen + Math.max(0, s.kinder - 5) * C.kfw300.proWeiteremKind;
+    if (!s.zveGeprueft || s.zve <= grenze) {
+      return { prog: '300', name: 'KfW 300 „Wohneigentum für Familien“', max: s.qng ? st.qng : st.basis,
+               zins: s.z300, laufzeit: C.kfw300.laufzeit, grenze };
+    }
+    return { ...f297(s), ausgeschlossen: `Einkommensgrenze KfW 300 (${eur(grenze)} €) überschritten`, grenze };
+  }
+  const r = f297(s);
+  if (s.kinder >= 1 && s.eigentum) r.ausgeschlossen = 'KfW 300 entfällt bei bestehendem Wohneigentum';
+  return r;
+}
+const f297 = s => ({ prog: '297', name: 'KfW 297/298 „Klimafreundlicher Neubau“', max: s.qng ? C.kfw297.maxEh40Qng : C.kfw297.maxEh40,
+                     zins: s.z297, laufzeit: C.kfw297.laufzeit });
+
+function rechne(h, s) {
+  const gNK = s.grund * KNK();
+  const gesamt = h.hauspreis + s.grund + gNK;
+  const ek = Math.min(s.ek, gesamt);
+  const bedarf = Math.max(0, gesamt - ek);
+  const f = foerderung(s);
+  const kfw = Math.min(f.max, bedarf);
+  const bank = bedarf - kfw;
+  const rBank = rateBank(bank, s.zins, s.tilg);
+  const rKfw = rateAnnuitaet(kfw, f.zins, f.laufzeit);
+  const rate = rBank + rKfw;
+  const k = (s.zins + s.tilg) / 1200;
+  const wf = { haus: h.hauspreis * k, grund: (s.grund + gNK) * k, ek: -ek * k, foerder: -(kfw * k - rKfw) };
+  const rest10 = restschuldBank(bank, s.zins, s.tilg, 10) + restschuldAnn(kfw, f.zins, f.laufzeit, 10);
+  return { gesamt, gNK, ek, bedarf, f, kfw, bank, rBank, rKfw, rate, wf, rest10 };
+}
+
+function haushalt(s, rate) {
+  const leb = C.haushalt.erwachsener1 + (s.erw >= 2 ? C.haushalt.erwachsener2 : 0);
+  const unterhalt = C.haushalt.hausunterhalt;
+  const trag = Math.max(0, s.netto - leb - unterhalt - s.kred);
+  return { leb, unterhalt, trag, luft: trag - rate };
+}
+
+/* ============================================================================
+   STATE & UI
+   ============================================================================ */
+const S = {
+  haus: null, kinder: C.start.kinder, qng: C.start.qng, grund: C.start.grundstueck, ek: C.start.eigenkapital,
+  tilg: C.tilgung, zins: C.bankzins, z300: C.kfw300.zins, z297: C.kfw297.zins, knk: C.kaufnebenkostenQuote, erw: C.start.erwachsene, netto: C.start.netto, kred: C.start.kredite,
+  miete: C.start.miete, zve: C.start.zve, zveGeprueft: false, eigentum: false, maxStep: 1,
+};
+const G = { tab: 'bilder', i: 0 };
+const $ = id => document.getElementById(id);
+const haus = () => C.haeuser.find(h => h.id === S.haus);
+const promoS = grund => ({ ...S, kinder: C.start.kinder, qng: C.start.qng, grund, ek: C.start.eigenkapital, tilg: C.tilgung, zveGeprueft: false, eigentum: false });
+const promo = h => rechne(h, promoS(0));
+const promoMitGrund = h => rechne(h, promoS(C.beispielGrundstueck));
+
+const anim = new Map();
+function countTo(el, to) {
+  const from = anim.get(el) ?? to; anim.set(el, to);
+  if (from === to || matchMedia('(prefers-reduced-motion: reduce)').matches) { el.textContent = eur(to); return; }
+  const t0 = performance.now(), dur = 420;
+  const step = t => { const p = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - p, 3);
+    if (anim.get(el) !== to) return; el.textContent = eur(from + (to - from) * e); if (p < 1) requestAnimationFrame(step); };
+  requestAnimationFrame(step);
+}
+function fill(r) { const p = (r.value - r.min) / (r.max - r.min) * 100; r.style.setProperty('--p', p + '%'); }
+
+function buildCards() {
+  $('heroImg').src = C.haeuser[1].bilder[0].src;
+  $('s1').innerHTML = C.haeuser.map(h => `<div class="card" data-h="${h.id}" role="button" tabindex="0">
+      <div class="ph"><img src="${h.img}" alt="SchwabenHaus White&Black ${h.name}" loading="lazy"><span class="tag">${h.typ}</span><span class="selmark">✓ Ausgewählt</span>
+        <button class="cnt" data-lb="${h.id}">▦ ${h.bilder.length} Ansichten · ${h.plaene.length} Grundrisse</button></div>
+      <div class="body">
+        <h3><small>White&amp;Black</small>${h.name}</h3>
+        <div class="facts"><span>▢ ${eur(h.flaeche, 2)} m²</span><span>◫ ${h.zimmer} Zimmer</span><span>≡ ${h.geschosse} ${h.geschosse === 1 ? 'Geschoss' : 'Geschosse'}</span></div>
+        <div class="price">Hauspreis <b class="num">${eur(h.hauspreis)} €</b></div>
+        <div class="rate-box">
+          <div class="lbl">Ihre Hausrate</div>
+          <div class="rate-big num">ab <span data-pr="${h.id}">–</span> € <small>/ Monat*</small></div>
+          <div class="sub num"><span>mit Grundstück ${eur(C.beispielGrundstueck)} €</span><b><span data-pk="${h.id}">–</span> € / Monat</b></div>
+        </div>
+        <div class="go"><span>Ansehen &amp; Rate berechnen</span><span class="arr">→</span></div>
+      </div></div>`).join('');
+  document.querySelectorAll('.card').forEach(c => {
+    c.addEventListener('click', () => waehleHaus(c.dataset.h, true));
+    c.addEventListener('keydown', e => { if (e.key === 'Enter') waehleHaus(c.dataset.h, true); });
+  });
+  document.querySelectorAll('[data-lb]').forEach(b => b.addEventListener('click', e => {
+    e.stopPropagation(); const h = C.haeuser.find(x => x.id === b.dataset.lb);
+    openLb([...h.bilder, ...h.plaene], 0);
+  }));
+  updCards();
+}
+function updCards() {
+  const min = Math.min(...C.haeuser.map(h => promo(h).rate));
+  $('heroMin').textContent = eur(Math.ceil(min));
+  C.haeuser.forEach(h => {
+    document.querySelector(`[data-pr="${h.id}"]`).textContent = eur(Math.ceil(promo(h).rate));
+    document.querySelector(`[data-pk="${h.id}"]`).textContent = eur(Math.ceil(promoMitGrund(h).rate));
+  });
+  $('assume').innerHTML = `
+    <span class="pill">Beispiel: <b>Familie mit ${C.start.kinder} Kindern</b></span>
+    <span class="pill"><b>KfW-Förderung</b> mit QNG-Siegel</span>
+    <span class="pill"><b>${eur(C.start.eigenkapital)} €</b> Eigenkapital</span>
+    <span class="pill">Bankzins <b>${pct(S.zins)}</b>, 10 Jahre fest</span>`;
+}
+function waehleHaus(id, scroll) {
+  const neu = S.haus !== id;
+  S.haus = id;
+  document.querySelectorAll('.card').forEach(c => c.classList.toggle('sel', c.dataset.h === id));
+  if (neu) { G.tab = 'bilder'; G.i = 0; buildDetail(); }
+  S.maxStep = Math.max(S.maxStep, 2); show('s2'); update();
+  if (scroll) setTimeout(() => $('s2').scrollIntoView({ behavior: 'smooth', block: 'start' }), 60);
+}
+function show(id) { $(id).classList.add('show'); stepper(); }
+function stepper() {
+  document.querySelectorAll('.step').forEach((b, i) => {
+    const n = i + 1; b.disabled = n > S.maxStep;
+    b.classList.toggle('on', n === S.maxStep); b.classList.toggle('done', n < S.maxStep);
+  });
+}
+
+/* ---------- Galerie ---------- */
+const galList = () => haus()[G.tab];
+function buildDetail() {
+  const h = haus();
+  $('dKick').textContent = `White&Black · ${h.typ}`;
+  $('dName').textContent = h.name;
+  $('dDesc').textContent = h.desc;
+  $('dKpis').innerHTML = `<div class="kpi"><span>Wohnfläche</span><b class="num">${eur(h.flaeche, 2)} m²</b></div>
+    <div class="kpi"><span>Zimmer</span><b>${h.zimmer}</b></div><div class="kpi"><span>Geschosse</span><b>${h.geschosse}</b></div>`;
+  $('dFeat').innerHTML = h.features.map(f => `<li>${f}</li>`).join('');
+  $('dPrice').textContent = eur(h.hauspreis) + ' €';
+  $('dLink').href = h.url;
+  $('galTabs').querySelectorAll('button').forEach(b => b.classList.toggle('on', b.dataset.t === G.tab));
+  const L = galList();
+  $('thumbs').className = 'thumbs' + (G.tab === 'plaene' ? ' plan' : '');
+  $('thumbs').innerHTML = L.map((b, i) => `<button data-i="${i}" aria-label="${b.cap}"><img src="${b.src}" alt="" loading="lazy"></button>`).join('');
+  $('thumbs').querySelectorAll('button').forEach(b => b.addEventListener('click', () => { G.i = +b.dataset.i; showGal(); }));
+  showGal();
+}
+function showGal() {
+  const L = galList(), b = L[G.i];
+  $('galMain').classList.toggle('plan', G.tab === 'plaene');
+  $('galImg').src = b.src; $('galImg').alt = b.cap; $('galCap').textContent = `${b.cap} · ${G.i + 1}/${L.length}`;
+  $('thumbs').querySelectorAll('button').forEach((t, i) => t.classList.toggle('on', i === G.i));
+  const on = $('thumbs').querySelector('.on'); if (on) on.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+}
+$('galTabs').querySelectorAll('button').forEach(b => b.addEventListener('click', () => { G.tab = b.dataset.t; G.i = 0; buildDetail(); }));
+$('galPrev').addEventListener('click', e => { e.stopPropagation(); const n = galList().length; G.i = (G.i - 1 + n) % n; showGal(); });
+$('galNext').addEventListener('click', e => { e.stopPropagation(); const n = galList().length; G.i = (G.i + 1) % n; showGal(); });
+$('galMain').addEventListener('click', () => openLb(galList(), G.i));
+
+/* ---------- Lightbox ---------- */
+const LB = { list: [], i: 0 };
+function openLb(list, i) { LB.list = list; LB.i = i; lbShow(); $('lb').classList.add('show'); document.body.style.overflow = 'hidden'; }
+function lbShow() { const b = LB.list[LB.i]; $('lbImg').src = b.src; $('lbImg').alt = b.cap; $('lbCap').textContent = `${b.cap} · ${LB.i + 1}/${LB.list.length}`; }
+function lbClose() { $('lb').classList.remove('show'); document.body.style.overflow = ''; }
+const lbMove = d => { LB.i = (LB.i + d + LB.list.length) % LB.list.length; lbShow(); };
+$('lbX').addEventListener('click', lbClose);
+$('lbP').addEventListener('click', () => lbMove(-1));
+$('lbN').addEventListener('click', () => lbMove(1));
+$('lb').addEventListener('click', e => { if (e.target.id === 'lb') lbClose(); });
+document.addEventListener('keydown', e => {
+  if (!$('lb').classList.contains('show')) return;
+  if (e.key === 'Escape') lbClose(); if (e.key === 'ArrowLeft') lbMove(-1); if (e.key === 'ArrowRight') lbMove(1);
+});
+let tx = null;
+$('lb').addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+$('lb').addEventListener('touchend', e => { if (tx == null) return; const dx = e.changedTouches[0].clientX - tx; if (Math.abs(dx) > 50) lbMove(dx < 0 ? 1 : -1); tx = null; });
+
+function chips(el, items, get, set) {
+  el.innerHTML = items.map(it => `<button class="chip" data-v="${it.v}">${it.l}${it.d ? `<span class="d">${it.d}</span>` : ''}</button>`).join('');
+  el.querySelectorAll('.chip').forEach(b => b.addEventListener('click', () => { set(b.dataset.v); update(); }));
+  el._sync = () => el.querySelectorAll('.chip').forEach(b => b.classList.toggle('on', String(get()) === b.dataset.v));
+}
+
+function bindRange(id, key, cb) {
+  const r = $(id); r.value = S[key]; fill(r);
+  r.addEventListener('input', () => { S[key] = +r.value; fill(r); cb && cb(); update(); });
+}
+
+function update() {
+  const h = haus(); if (!h) return;
+  const R = rechne(h, S), P = promo(h);
+  updCards();
+  if (S.grund > +$('grund').max) $('grund').max = S.grund;
+  ['grund','ek','zins','netto','kred','miete','zve'].forEach(k => { const r = $(k); if (+r.value !== S[k]) r.value = S[k]; fill(r); });
+  const setIn = (id, txt) => { const el = $(id); if (document.activeElement !== el) el.value = txt; };
+  setIn('gIn', eur(S.grund) + ' €'); setIn('knkIn', eur(S.knk, 1)); setIn('zinsIn', eur(S.zins, 2));
+  setIn('z300In', eur(S.z300, 2)); setIn('z297In', eur(S.z297, 2)); setIn('tilgIn', eur(S.tilg, 2));
+  $('qng').checked = S.qng; $('eigentum').checked = S.eigentum;
+  $('kinderChips')._sync(); $('erwChips')._sync(); $('gChips')._sync();
+  $('gHint').textContent = S.grund ? `Rate inkl. Grundstück ${eur(S.grund)} € + ca. ${eur(R.gNK)} € Kaufnebenkosten (${eur(S.knk, 1)} %). Betrag frei eintippen oder schieben.` : 'Sie haben schon ein Grundstück? Dann rechnen wir nur das Haus.';
+  $('ekVal').textContent = eur(S.ek) + ' €';
+  const lz = laufzeitBank(S.zins, S.tilg);
+  $('tilgHint').textContent = `Bankdarlehen rechnerisch getilgt nach ca. ${isFinite(lz) ? eur(lz, 0) : '–'} Jahren. Förderdarlehen: feste Laufzeit ${R.f.laufzeit} Jahre.`;
+  $('kfwZinsHint').textContent = `Aktuell gerechnet: ${R.f.prog === '300' ? 'KfW 300' : 'KfW 297/298'} zu ${pct(R.f.zins)}, Bank zu ${pct(S.zins)} (eff. ca. ${pct(effZins(S.zins))}). Änderungen wirken auch auf die Raten der Hauskarten.`;
+
+  $('dRate').textContent = eur(Math.ceil(P.rate)) + ' € / Monat';
+  $('rImg').src = h.img; $('rName').textContent = 'White&Black ' + h.name;
+  $('rFacts').textContent = `${h.typ} · ${eur(h.flaeche, 2)} m² · ${h.zimmer} Zimmer`;
+  countTo($('rRate'), Math.ceil(R.rate));
+  const d = Math.ceil(R.rate) - Math.ceil(P.rate);
+  $('rDelta').textContent = d === 0 ? 'entspricht der beworbenen Hausrate' : (d > 0 ? `+ ${eur(d)} € ggü. Beispielrate ${eur(Math.ceil(P.rate))} €` : `− ${eur(-d)} € ggü. Beispielrate ${eur(Math.ceil(P.rate))} €`);
+  const b = $('kfwBadge');
+  if (R.kfw > 0) {
+    b.className = 'kfw-badge';
+    b.innerHTML = `<span class="ic">✓</span><div><b>${eur(R.kfw)} € Förderdarlehen</b> aus ${R.f.name} zu ${pct(R.f.zins)}. Das spart Ihnen <b>${eur(Math.round(-R.wf.foerder))} € im Monat</b>.${R.f.ausgeschlossen ? `<br><span style="opacity:.8">${R.f.ausgeschlossen}.</span>` : ''}</div>`;
+  } else { b.className = 'kfw-badge off'; b.innerHTML = '<span class="ic">i</span><div>Kein Förderdarlehen erforderlich.</div>'; }
+
+  const rows = [
+    { l: 'Haus', v: R.wf.haus, c: 'plus' },
+    { l: 'Grundstück inkl. Nebenkosten', v: R.wf.grund, c: 'plus' },
+    { l: 'Eigenkapital', v: R.wf.ek, c: 'minus' },
+    { l: 'Förder-Vorteil KfW', v: R.wf.foerder, c: 'minus' },
+  ];
+  const top = R.wf.haus + R.wf.grund; let pos = 0;
+  $('wfRows').innerHTML = rows.map(r => {
+    let left, w;
+    if (r.v >= 0) { left = pos; w = r.v; pos += r.v; } else { pos += r.v; left = pos; w = -r.v; }
+    return `<div class="wf-row ${r.c}"><span>${r.l}</span><div class="bar"><i style="left:${left / top * 100}%;width:${w / top * 100}%"></i></div><span class="amt num">${r.v >= 0 ? '+' : '−'} ${eur(Math.abs(Math.round(r.v)))} €</span></div>`;
+  }).join('') + `<div class="wf-row total"><span>Ihre Rate</span><div class="bar"><i style="left:0;width:${R.rate / top * 100}%"></i></div><span class="amt num">${eur(Math.ceil(R.rate))} €</span></div>`;
+
+  const tot = R.bank + R.kfw || 1;
+  $('split').innerHTML = `<i style="width:${R.kfw / tot * 100}%;background:var(--kfw)"></i><i style="width:${R.bank / tot * 100}%;background:var(--bank)"></i>`;
+  $('splitLegend').innerHTML = `<span style="--c:var(--kfw)">Förderdarlehen ${eur(R.kfw)} € · ${eur(Math.round(R.rKfw))} €/M.</span><span style="--c:var(--bank)">Bankdarlehen ${eur(R.bank)} € · ${eur(Math.round(R.rBank))} €/M.</span>`;
+
+  $('cmp').innerHTML = C.haeuser.map(x => `<button class="cmp-item ${x.id === h.id ? 'on' : ''}" data-h="${x.id}"><span>${x.name}</span><b class="num">${eur(Math.ceil(rechne(x, S).rate))} €</b></button>`).join('');
+  $('cmp').querySelectorAll('.cmp-item').forEach(el => el.addEventListener('click', () => waehleHaus(el.dataset.h, false)));
+
+  updateHaushalt(h, R);
+  updateFine(h, R);
+}
+
+function updateHaushalt(h, R) {
+  const H = haushalt(S, R.rate);
+  if (document.activeElement !== $('nettoIn')) $('nettoIn').value = eur(S.netto);
+  $('kredVal').textContent = eur(S.kred) + ' €';
+  $('mieteVal').textContent = S.miete ? eur(S.miete) + ' €' : '–';
+  $('zveVal').textContent = eur(S.zve) + ' €';
+  $('foerderCtl').style.display = S.kinder >= 1 ? '' : 'none';
+  const st = C.kfw300.staffelung[Math.min(Math.max(S.kinder, 1), 5)];
+  const grenze = st.maxEinkommen + Math.max(0, S.kinder - 5) * C.kfw300.proWeiteremKind;
+  $('zveHint').textContent = `Grenze für die Familienförderung bei ${S.kinder} Kind${S.kinder === 1 ? '' : 'ern'}: ${eur(grenze)} € (zu versteuerndes Einkommen, nicht brutto).`;
+  const w = $('foerderWarn');
+  if (S.zveGeprueft && R.f.ausgeschlossen) { w.classList.add('show'); w.innerHTML = `${R.f.ausgeschlossen}. Wir rechnen stattdessen mit ${R.f.name} (${eur(R.f.max)} €). Ihre Rate: <b>${eur(Math.ceil(R.rate))} €</b>.`; }
+  else w.classList.remove('show');
+
+  const rate = Math.ceil(R.rate), luft = Math.floor(H.luft);
+  const v = $('verdict');
+  if (luft >= 150) { v.className = 'verdict ok'; v.innerHTML = `<div class="ic">✓</div><div><h3>Das passt!</h3><p>Nach Rate und Lebenshaltung bleiben Ihnen noch <b class="num">${eur(luft)} €</b> im Monat Luft.</p></div>`; }
+  else if (luft >= 0) { v.className = 'verdict mid'; v.innerHTML = `<div class="ic">!</div><div><h3>Knapp, aber machbar</h3><p>Es bleiben <b class="num">${eur(luft)} €</b> Puffer. Wir schauen gemeinsam, wie wir mehr Luft schaffen.</p></div>`; }
+  else { v.className = 'verdict no'; v.innerHTML = `<div class="ic">→</div><div><h3>Noch fehlen ${eur(-luft)} € im Monat</h3><p>Kein Grund aufzugeben: Mit diesen Stellschrauben kommen Sie hin.</p></div>`; }
+
+  const netto = Math.max(S.netto, 1), over = Math.max(0, -luft), scale = netto + over;
+  const seg = (cls, val, txt) => val > 0 ? `<i class="${cls}" style="width:${val / scale * 100}%" title="${txt}">${val / scale > .12 ? txt : ''}</i>` : '';
+  const lebGes = H.leb + H.unterhalt;
+  const rateShown = Math.min(rate, Math.max(0, netto - lebGes - S.kred));
+  $('bbar').innerHTML = seg('l', Math.min(lebGes, netto), 'Leben ' + eur(lebGes) + ' €') + seg('k', S.kred, 'Kredite') +
+    seg('h', rateShown, 'Hausrate ' + eur(rate) + ' €') + seg('f', Math.max(0, luft), 'Luft ' + eur(Math.max(0, luft)) + ' €') + seg('x', over, 'fehlt ' + eur(over) + ' €');
+  $('bLegend').innerHTML = `<span style="--c:#a5a5a0">Lebenshaltung + Hausunterhalt</span>${S.kred ? '<span style="--c:#6f6f6b">Kredite</span>' : ''}<span style="--c:#000">Hausrate</span>${luft >= 0 ? '<span style="--c:var(--green)">frei</span>' : '<span style="--c:var(--red)">fehlt</span>'}`;
+  $('htab').innerHTML = `
+    <tr><td>Netto-Einkommen</td><td>${eur(S.netto)} €</td></tr>
+    <tr><td>Lebenshaltung (${S.erw} Erw., Bank-Pauschale)</td><td>− ${eur(H.leb)} €</td></tr>
+    <tr><td>Hausunterhalt / Rücklage</td><td>− ${eur(H.unterhalt)} €</td></tr>
+    ${S.kred ? `<tr><td>Laufende Kreditraten</td><td>− ${eur(S.kred)} €</td></tr>` : ''}
+    <tr><td>Hausrate ${h.name}</td><td>− ${eur(rate)} €</td></tr>
+    <tr class="sum"><td>${luft >= 0 ? 'Verbleibt' : 'Fehlbetrag'}</td><td style="color:${luft >= 0 ? 'var(--green)' : 'var(--red)'}">${luft >= 0 ? '' : '− '}${eur(Math.abs(luft))} €</td></tr>`;
+
+  const mb = $('mieteBox');
+  if (S.miete > 0) {
+    const diff = rate - S.miete;
+    mb.style.display = '';
+    mb.innerHTML = diff > 0
+      ? `Heute zahlen Sie <b class="num">${eur(S.miete)} €</b> Miete, für fremdes Eigentum. Ihr eigenes Haus kostet nur <b class="num">${eur(diff)} €</b> mehr im Monat.`
+      : `Ihre Hausrate liegt <b class="num">${eur(-diff)} €</b> unter Ihrer heutigen Miete von ${eur(S.miete)} €, und am Ende gehört Ihnen das Haus.`;
+  } else mb.style.display = 'none';
+
+  const L = [];
+  if (luft < 150) {
+    const ekNeed = benoetigtesEK(h, H.trag - 150);
+    if (ekNeed != null && ekNeed > S.ek) L.push(`<b>${eur(Math.ceil((ekNeed - S.ek) / 1000) * 1000)} €</b>&nbsp;mehr Eigenkapital bringen die Rate in den grünen Bereich.`);
+    L.push(`Ein Netto-Plus von <b>${eur(Math.max(0, 150 - luft))} €</b>&nbsp;im Monat (z. B. zweites Einkommen, Elternzeit-Ende) reicht aus.`);
+    const alt = C.haeuser.filter(x => x.id !== h.id).map(x => ({ x, r: rechne(x, S).rate })).filter(o => o.r < R.rate).sort((a, b) => a.r - b.r)[0];
+    if (alt) L.push(`Das Modell <b>${alt.x.name}</b>&nbsp;liegt mit Ihren Angaben bei ${eur(Math.ceil(alt.r))} € im Monat.`);
+    if (!S.qng && R.f.max) L.push(`Mit <b>QNG-Siegel</b>&nbsp;steigt das Förderdarlehen und die Rate sinkt.`);
+    if (S.grund > 0) L.push(`Ein günstigeres Grundstück senkt die Rate um ca. <b>${eur(Math.round(10000 * (1 + KNK()) * (S.zins + S.tilg) / 1200))} €</b>&nbsp;je 10.000 €.`);
+  }
+  $('levers').innerHTML = L.map(t => `<div class="lever"><span>↳</span><span>${t}</span></div>`).join('');
+}
+
+function benoetigtesEK(h, zielRate) {
+  if (zielRate <= 0) return null;
+  const gesamt = rechne(h, { ...S, ek: 0 }).gesamt;
+  if (rechne(h, { ...S, ek: 0 }).rate <= zielRate) return 0;
+  let lo = 0, hi = gesamt;
+  for (let i = 0; i < 40; i++) { const m = (lo + hi) / 2; if (rechne(h, { ...S, ek: m }).rate > zielRate) lo = m; else hi = m; }
+  return hi;
+}
+
+function updateFine(h, R) {
+  const mz = R.bedarf ? (R.bank * S.zins + R.kfw * R.f.zins) / R.bedarf : 0;
+  const me = R.bedarf ? (R.bank * effZins(S.zins) + R.kfw * effZins(R.f.zins)) / R.bedarf : 0;
+  $('repr').innerHTML = `<h5>Rechenbeispiel White&amp;Black ${h.name} (unverbindlich, kein Angebot)</h5>
+    Gesamtkosten ${eur(R.gesamt)} € (Hauspreis ${eur(h.hauspreis)} €${S.grund ? `, Grundstück ${eur(S.grund)} € zzgl. ${eur(R.gNK)} € Kaufnebenkosten` : ''}), Eigenkapital ${eur(R.ek)} €,
+    Nettodarlehensbetrag ${eur(R.bedarf)} €, davon Bankdarlehen ${eur(R.bank)} € zu ${pct(S.zins)} gebundenem Sollzins p. a. (eff. Jahreszins ca. ${pct(effZins(S.zins))}), Sollzinsbindung ${C.zinsbindung} Jahre, anfängliche Tilgung ${pct(S.tilg)} p. a.${R.kfw ? `; Förderdarlehen ${R.f.name} ${eur(R.kfw)} € zu ${pct(R.f.zins)} Sollzins p. a. (eff. ca. ${pct(effZins(R.f.zins))}), Annuitätendarlehen über ${R.f.laufzeit} Jahre` : ''}.
+    Mischzins ca. ${pct(mz)} (eff. ca. ${pct(me)}). Monatliche Rate in der Zinsbindung: ${eur(R.rate, 2)} €. Restschuld nach ${C.zinsbindung} Jahren ca. ${eur(R.rest10)} €. Das Darlehen wird durch ein Grundpfandrecht besichert.`;
+  $('annahmen').innerHTML = `* Beworbene Hausrate: Hauspreis ohne Grundstück (Bungalow 95: ${eur(C.haeuser[0].hauspreis)} €, Haus 120: ${eur(C.haeuser[1].hauspreis)} €, Haus 130: ${eur(C.haeuser[2].hauspreis)} €), Familie mit ${C.start.kinder} Kindern, Förderdarlehen KfW 300 mit QNG-Siegel (Voraussetzungen: u. a. Einkommensgrenze, kein bestehendes Wohneigentum, Effizienzhaus 40, QNG-Zertifizierung), ${eur(C.start.eigenkapital)} € Eigenkapital, Förderdarlehen KfW 300 zu ${pct(S.z300)}, Bankdarlehen ${pct(S.zins)} Sollzins bei ${C.zinsbindung} Jahren Zinsbindung und ${pct(C.tilgung)} anfänglicher Tilgung. Alle Werte sind unverbindliche Beispielrechnungen auf Basis aktueller Marktkonditionen und ersetzen keine Beratung. Die tatsächlichen Konditionen hängen von Bonität, Beleihungswert und Förderzusage ab. Haushaltsrechnung mit bankenüblichen Pauschalen (${eur(C.haushalt.erwachsener1)} € erste Person, ${eur(C.haushalt.erwachsener2)} € zweite Person, ${eur(C.haushalt.hausunterhalt)} € Hausunterhalt). Hausbilder und Grundrisse: SchwabenHaus / White&amp;Black (whiteandblack.de); Darstellungen können Sonderausstattung enthalten.`;
+}
+
+const initials = n => n.split(' ').map(p => p[0]).join('').slice(0, 2).toUpperCase();
+function buildContacts() {
+  const hv = C.hausverkaeufer, fi = C.finanzierer;
+  $('saLink').href = fi.selbstauskunftUrl;
+  $('pHaus').innerHTML = `<div class="av">${initials(hv.name)}</div><span class="role">${hv.rolle}</span><b>${hv.name}</b><span class="co">${hv.firma}<br>Haus, Grundriss &amp; Ausstattung</span>
+    <div class="acts">${hv.telefon ? `<a class="btn light" href="tel:${hv.telefon.replace(/[^\d+]/g, '')}">☎ ${hv.telefon}</a>` : ''}
+    ${hv.email ? `<a class="btn outline" id="mailHaus" href="#">✉ Termin per E-Mail</a>` : ''}
+    ${!hv.telefon && !hv.email ? `<a class="btn outline" href="${haus() ? haus().url : 'https://whiteandblack.de/'}" target="_blank" rel="noopener">Haus auf whiteandblack.de ↗</a>` : ''}</div>`;
+  $('pFin').innerHTML = `<div class="av">${initials(fi.name)}</div><span class="role">${fi.rolle}</span><b>${fi.name}</b><span class="co">${fi.firma}<br>über 750 Banken im Vergleich</span>
+    <div class="acts"><a class="btn light" href="${fi.selbstauskunftUrl}" target="_blank" rel="noopener">${fi.ctaLabel} →</a>
+    ${fi.telefon ? `<a class="btn outline" href="tel:${fi.telefon.replace(/[^\d+]/g, '')}">☎ ${fi.telefon}</a>` : ''}</div>`;
+  const mh = $('mailHaus');
+  if (mh) mh.addEventListener('click', e => {
+    e.preventDefault(); const h = haus(); const R = rechne(h, S);
+    const body = `Hallo ${hv.name},\n\nich interessiere mich für das White&Black ${h.name}.\nMeine berechnete Rate: ${eur(Math.ceil(R.rate))} € im Monat\n(Kinder: ${S.kinder}, QNG: ${S.qng ? 'ja' : 'nein'}, Grundstück: ${S.grund ? eur(S.grund) + ' €' : 'vorhanden'}, Eigenkapital: ${eur(S.ek)} €)\n\nBitte kontaktieren Sie mich für einen Beratungstermin.\n\nViele Grüße`;
+    location.href = `mailto:${hv.email}?subject=${encodeURIComponent('Beratungstermin White&Black ' + h.name)}&body=${encodeURIComponent(body)}`;
+  });
+  const a = C.anbieter;
+  $('impressum').innerHTML = `<div><b>${a.name}</b><br>${a.zusatz}<br>${a.adresse}<br>Tel. ${a.telefon} · ${a.email} · ${a.web}</div>
+    <div>${a.handelsregister} · Vorstand: ${a.vorstand} · Aufsichtsrat: ${a.aufsichtsrat}<br>${a.erlaubnis}, Reg.-Nr. ${a.registrierungsnummer} (${a.registerbehoerde})<br>
+    <a href="${a.impressumUrl}" target="_blank" rel="noopener">Impressum</a> · <a href="${a.datenschutzUrl}" target="_blank" rel="noopener">Datenschutz</a></div>`;
+}
+
+function druck() {
+  const h = haus(), R = rechne(h, S), H = haushalt(S, R.rate);
+  $('printArea').innerHTML = `<div style="display:flex;justify-content:space-between;align-items:flex-end"><div><div style="letter-spacing:.14em;font-weight:800;font-size:16px">SCHWABENHAUS</div><div style="font-size:13px">white&amp;black</div></div>
+    <div style="text-align:right;font-size:11px"><b>CEB Bankshop AG</b><br>Vermittlung von Bankdienstleistungen</div></div>
+    <h1>White&amp;Black ${h.name}: Ihre Rate ${eur(Math.ceil(R.rate))} € im Monat</h1>
+    <div style="color:#666">${h.typ} · ${eur(h.flaeche, 2)} m² · ${h.zimmer} Zimmer · ${h.geschosse} ${h.geschosse === 1 ? 'Geschoss' : 'Geschosse'} · erstellt am ${new Date().toLocaleDateString('de-DE')}</div>
+    <img src="${h.img}">
+    <table>
+      <tr><td>Kinder unter 18</td><td>${S.kinder}</td></tr><tr><td>QNG-Siegel</td><td>${S.qng ? 'ja' : 'nein'}</td></tr>
+      <tr><td>Hauspreis</td><td>${eur(h.hauspreis)} €</td></tr>
+      <tr><td>Grundstück inkl. Kaufnebenkosten</td><td>${eur(S.grund + R.gNK)} €</td></tr>
+      <tr><td>Eigenkapital</td><td>${eur(R.ek)} €</td></tr>
+      <tr><td>Förderdarlehen (${R.f.prog === '300' ? 'KfW 300' : 'KfW 297/298'}) zu ${pct(R.f.zins)}</td><td>${eur(R.kfw)} € · ${eur(R.rKfw, 2)} €/M.</td></tr>
+      <tr><td>Bankdarlehen zu ${pct(S.zins)}, ${pct(S.tilg)} Tilgung</td><td>${eur(R.bank)} € · ${eur(R.rBank, 2)} €/M.</td></tr>
+      <tr><td><b>Monatliche Rate</b></td><td><b>${eur(R.rate, 2)} €</b></td></tr>
+      <tr><td>Netto-Einkommen / Lebenshaltung inkl. Hausunterhalt / Kredite</td><td>${eur(S.netto)} € / ${eur(H.leb + H.unterhalt)} € / ${eur(S.kred)} €</td></tr>
+      <tr><td><b>${H.luft >= 0 ? 'Verbleibt monatlich' : 'Fehlbetrag monatlich'}</b></td><td><b>${eur(Math.abs(Math.floor(H.luft)))} €</b></td></tr>
+    </table>
+    <p style="font-size:12px;margin-top:16px">Hausberater: ${C.hausverkaeufer.name}, ${C.hausverkaeufer.firma}${C.hausverkaeufer.telefon ? ', ' + C.hausverkaeufer.telefon : ''}${C.hausverkaeufer.email ? ', ' + C.hausverkaeufer.email : ''}<br>
+    Finanzierung: ${C.finanzierer.name}, ${C.finanzierer.firma}, ${C.finanzierer.telefon}</p>
+    <p style="font-size:10px;color:#777">${$('repr').innerText}<br><br>${$('annahmen').innerText}</p>`;
+  window.print();
+}
+
+/* ============================================================================
+   INIT
+   ============================================================================ */
+buildCards();
+chips($('kinderChips'), [0,1,2,3,4,5].map(n => ({ v: n, l: n === 5 ? '5+' : String(n) })), () => S.kinder, v => S.kinder = +v);
+chips($('erwChips'), [{ v: 1, l: '1 Person' }, { v: 2, l: '2 Personen' }], () => S.erw, v => S.erw = +v);
+chips($('gChips'), [{ v: 0, l: 'Schon vorhanden' }, ...C.grundstueckChips.map(v => ({ v, l: eur(v) + ' €' }))], () => S.grund, v => S.grund = +v);
+$('qng').addEventListener('change', e => { S.qng = e.target.checked; update(); });
+$('eigentum').addEventListener('change', e => { S.eigentum = e.target.checked; update(); });
+bindRange('grund', 'grund'); bindRange('ek', 'ek'); bindRange('zins', 'zins');
+const LIM = { zins: [0.5, 9], z300: [0, 6], z297: [0, 6], tilg: [0.5, 6], knk: [0, 15], grund: [0, 2000000] };
+const clamp = (k, v) => Math.min(LIM[k][1], Math.max(LIM[k][0], Math.round(v * 100) / 100));
+const parseDe = t => parseFloat(String(t).replace(/[^\d,.-]/g, '').replace(/\./g, '').replace(',', '.'));
+[['zinsIn','zins'],['z300In','z300'],['z297In','z297'],['tilgIn','tilg'],['knkIn','knk'],['gIn','grund']].forEach(([id, k]) => {
+  const el = $(id);
+  el.addEventListener('focus', () => el.select());
+  el.addEventListener('keydown', e => { if (e.key === 'Enter') el.blur(); });
+  el.addEventListener('change', () => { const v = parseDe(el.value); if (!isNaN(v)) S[k] = clamp(k, v); el.blur(); update(); });
+});
+document.querySelectorAll('.stp button').forEach(b => b.addEventListener('click', () => {
+  const k = b.dataset.k; S[k] = clamp(k, S[k] + parseFloat(b.dataset.d)); update();
+}));
+bindRange('netto', 'netto'); bindRange('kred', 'kred'); bindRange('miete', 'miete');
+bindRange('zve', 'zve', () => { S.zveGeprueft = true; });
+$('nettoIn').addEventListener('change', e => { const v = parseInt(e.target.value.replace(/\D/g, ''), 10); if (v > 0) { S.netto = v; $('netto').max = Math.max(12000, v); } e.target.blur(); update(); });
+$('nettoIn').addEventListener('focus', e => e.target.select());
+$('toS3').addEventListener('click', () => { S.maxStep = Math.max(S.maxStep, 3); S.zveGeprueft = true; show('s3'); update(); $('s3').scrollIntoView({ behavior: 'smooth' }); });
+$('toS4').addEventListener('click', () => { S.maxStep = Math.max(S.maxStep, 4); buildContacts(); show('s4'); $('s4').scrollIntoView({ behavior: 'smooth' }); });
+document.querySelectorAll('.step').forEach(b => b.addEventListener('click', () => { if (!b.disabled) $(b.dataset.go).scrollIntoView({ behavior: 'smooth', block: 'start' }); }));
+$('printBtn').addEventListener('click', druck);
+buildContacts();
+updateFine(C.haeuser[0], promo(C.haeuser[0]));
+</script>
+</body>
+</html>
